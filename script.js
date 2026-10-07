@@ -2,52 +2,302 @@
 // PORTFOLIO JAVASCRIPT
 // ===============================
 
+// Get all navigation buttons
+const navLinks = document.querySelectorAll(".nav-link");
+
+// Get all sections
+const sections = document.querySelectorAll(".content-section");
 
 // ===============================
-// SMOOTH SCROLLING
+// NAVIGATION
 // ===============================
 
-document.querySelectorAll('a[href^="#"]').forEach(function (link) {
-
+navLinks.forEach(link => {
     link.addEventListener("click", function (event) {
+        event.preventDefault();
 
-        const target = document.querySelector(
-            this.getAttribute("href")
-        );
+        const targetId = this.getAttribute("data-section");
 
-        if (target) {
+        // Hide all sections
+        sections.forEach(section => {
+            section.style.display = "none";
+        });
 
-            event.preventDefault();
+        // Show selected section
+        const targetSection = document.getElementById(targetId);
 
-            target.scrollIntoView({
-                behavior: "smooth"
-            });
+        if (targetSection) {
+            targetSection.style.display = "block";
+        }
 
+        // Remove active class
+        navLinks.forEach(nav => {
+            nav.classList.remove("active");
+        });
+
+        // Add active class
+        this.classList.add("active");
+    });
+});
+
+
+// ===============================
+// FILE VIEWER
+// ===============================
+
+function viewFile(file) {
+
+    if (!file) {
+        alert("No file selected.");
+        return;
+    }
+
+    const fileURL = URL.createObjectURL(file);
+
+    const fileViewer = document.getElementById("fileViewer");
+    const viewerContent = document.getElementById("viewerContent");
+
+    if (!fileViewer || !viewerContent) {
+        alert("File viewer was not found in the HTML.");
+        return;
+    }
+
+    viewerContent.innerHTML = "";
+
+    // IMAGE
+    if (file.type.startsWith("image/")) {
+
+        const image = document.createElement("img");
+
+        image.src = fileURL;
+        image.alt = "Portfolio Activity";
+
+        image.style.maxWidth = "100%";
+        image.style.maxHeight = "80vh";
+        image.style.display = "block";
+        image.style.margin = "auto";
+
+        viewerContent.appendChild(image);
+    }
+
+    // PDF
+    else if (file.type === "application/pdf") {
+
+        const pdf = document.createElement("iframe");
+
+        pdf.src = fileURL;
+
+        pdf.style.width = "100%";
+        pdf.style.height = "80vh";
+        pdf.style.border = "none";
+
+        viewerContent.appendChild(pdf);
+    }
+
+    else {
+        alert("Please upload an image or PDF file.");
+        return;
+    }
+
+    fileViewer.style.display = "flex";
+}
+
+
+// ===============================
+// CLOSE FILE VIEWER
+// ===============================
+
+function closeViewer() {
+
+    const fileViewer = document.getElementById("fileViewer");
+
+    if (fileViewer) {
+        fileViewer.style.display = "none";
+    }
+
+    const viewerContent = document.getElementById("viewerContent");
+
+    if (viewerContent) {
+        viewerContent.innerHTML = "";
+    }
+}
+
+
+// ===============================
+// QUIZ FILE
+// ===============================
+
+const quizInput = document.getElementById("quizFile");
+
+if (quizInput) {
+
+    quizInput.addEventListener("change", function () {
+
+        const file = this.files[0];
+
+        if (file) {
+            viewFile(file);
         }
 
     });
+}
+
+
+// ===============================
+// LABORATORY FILE
+// ===============================
+
+const laboratoryInput = document.getElementById("laboratoryFile");
+
+if (laboratoryInput) {
+
+    laboratoryInput.addEventListener("change", function () {
+
+        const file = this.files[0];
+
+        if (file) {
+            viewFile(file);
+        }
+
+    });
+}
+
+
+// ===============================
+// EXAMINATION FILE
+// ===============================
+
+const examinationInput = document.getElementById("examinationFile");
+
+if (examinationInput) {
+
+    examinationInput.addEventListener("change", function () {
+
+        const file = this.files[0];
+
+        if (file) {
+            viewFile(file);
+        }
+
+    });
+}
+
+
+// ===============================
+// UPLOAD / SAVE FILE
+// ===============================
+
+function uploadFile(inputId, messageId) {
+
+    const input = document.getElementById(inputId);
+
+    if (!input || !input.files.length) {
+        alert("Please select a picture or PDF first.");
+        return;
+    }
+
+    const file = input.files[0];
+
+    // Check file type
+    const allowedTypes = [
+        "image/jpeg",
+        "image/png",
+        "image/jpg",
+        "image/webp",
+        "application/pdf"
+    ];
+
+    if (!allowedTypes.includes(file.type)) {
+        alert("Only JPG, PNG, WEBP, and PDF files are allowed.");
+        return;
+    }
+
+    // Save information temporarily in browser
+    const fileURL = URL.createObjectURL(file);
+
+    localStorage.setItem(
+        inputId + "_name",
+        file.name
+    );
+
+    localStorage.setItem(
+        inputId + "_type",
+        file.type
+    );
+
+    if (messageId) {
+
+        const message = document.getElementById(messageId);
+
+        if (message) {
+            message.textContent =
+                "Uploaded: " + file.name;
+        }
+    }
+
+    alert("File uploaded successfully!");
+
+    viewFile(file);
+}
+
+
+// ===============================
+// BUTTON FUNCTIONS
+// ===============================
+
+function uploadQuiz() {
+    uploadFile("quizFile", "quizMessage");
+}
+
+function uploadLaboratory() {
+    uploadFile("laboratoryFile", "laboratoryMessage");
+}
+
+function uploadExamination() {
+    uploadFile("examinationFile", "examinationMessage");
+}
+
+
+// ===============================
+// PAGE LOAD
+// ===============================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    // Hide all sections first
+    sections.forEach(section => {
+        section.style.display = "none";
+    });
+
+    // Show HOME
+    const homeSection = document.getElementById("home");
+
+    if (homeSection) {
+        homeSection.style.display = "block";
+    }
+
+    // Make HOME active
+    if (navLinks.length > 0) {
+        navLinks.forEach(nav => {
+            nav.classList.remove("active");
+        });
+
+        navLinks[0].classList.add("active");
+    }
 
 });
 
 
 // ===============================
-// NAVBAR EFFECT
+// CLOSE VIEWER WHEN CLICKING OUTSIDE
 // ===============================
 
-window.addEventListener("scroll", function () {
+window.addEventListener("click", function (event) {
 
-    const navbar = document.querySelector(".navbar");
+    const fileViewer = document.getElementById("fileViewer");
 
-    if (window.scrollY > 50) {
-
-        navbar.style.background =
-            "rgba(5, 17, 32, 1)";
-
-    } else {
-
-        navbar.style.background =
-            "rgba(5, 17, 32, 0.97)";
-
+    if (event.target === fileViewer) {
+        closeViewer();
     }
 
 });
