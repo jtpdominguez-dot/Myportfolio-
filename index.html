@@ -12,180 +12,201 @@
 
 <body>
 
-    <!--NAVIGATION -->
+    <!-- ================= NAVIGATION ================= -->
 
-    <nav>
+    <header class="navbar">
 
-        <div class="logo">
-            MY PORTFOLIO
-        </div>
+        <div class="nav-container">
 
-        <ul>
+            <a href="#home" class="logo">
+                <span>&lt;/&gt;</span> JT.
+            </a>
 
-            <li>
+            <nav>
                 <a href="#home">HOME</a>
-            </li>
-
-            <li>
+                <a href="#about">ABOUT</a>
                 <a href="#quiz">QUIZ</a>
-            </li>
-
-            <li>
                 <a href="#laboratory">LABORATORY</a>
-            </li>
-
-            <li>
                 <a href="#exam">EXAM</a>
-            </li>
-
-        </ul>
-
-    </nav>
-
-
-
-    <!--HOME-->
-
-    <section class="home" id="home">
-
-        <div class="profile">
-
-            <div class="profile-image">
-
-                <img src="profile.jpg.jpg" alt="John Tristan P. Dominguez">
-
-            </div>
-
-
-            <div class="profile-info">
-
-                <h1>John Tristan P. Dominguez</h1>
-
-                <h2>BSIT-3B</h2>
-
-                <p>Hello! I’m John Tristan P. Dominguez,BSIT-3B student who is passionate about learning programming and exploring new technologies. As I continue my journey in Information Technology, I’m developing my skills through different activities, projects, and hands-on experiences. Each challenge helps me learn, improve, and grow as a future IT professional. Welcome to my portfolio!</p>
-            </div>
+                <a href="#contact">CONTACT</a>
+            </nav>
 
         </div>
 
-    </section>
+    </header>
 
 
+    <!-- ================= HOME ================= -->
 
-    <!--QUIZ-->
+    <section id="home" class="hero">
 
-    <section class="content" id="quiz">
+        <div class="hero-content">
 
-        <h1>
-            QUIZ
-        </h1>
+            <div class="hero-text">
 
-        <p>My quizzes</p>
+                <p class="welcome">
+                    WELCOME TO MY PORTFOLIO
+                </p>
 
-
-        <div class="cards">
-
-
-            <!--QUIZ 1-->
-
-            <div class="card">
-
-                <div class="quiz-preview">
-
-                    <img id="quiz1Image" class="quiz-image" alt="Quiz 1">
-
-                    <p  id="quiz1Message" class="no-quiz"> No quiz uploaded yet. </p>
-
-                </div>
-
-
-                <h2>Quiz 1</h2>
-                <div class="upload-form">
-
-                    <label for="quiz1File">
-                        Upload your Quiz 1:
-                    </label>
-                    
-                    <input type="file" id="quiz1File" accept="image/*">
-
-<button type="button" class="upload-button" onclick="uploadQuiz('quiz1')">
-    Upload Quiz 1
-</button>
-
-
-    
-</button>
-
-                    <button type="button" class="delete-button" onclick="deleteQuiz('quiz1')"> Delete Quiz 1</button>
-
-                </div>
-
-            </div>
-
-
-
-            <!--QUIZ 2-->
-
-            <div class="card">
-
-                <div class="quiz-preview">
-
-                    <img id="quiz2Image" class="quiz-image" alt="Quiz 2" >
-
-                    <p id="quiz2Message" class="no-quiz">No quiz uploaded yet.</p>
-
-                </div>
-
-
-                <h2> Quiz 2 </h2>
-
-                <div class="upload-form">
-
-                    <label for="quiz2File">Upload your Quiz 2: 
-
-                    </label>
-                    <img src="image/quiz2.jpg.png" alt="Quiz 2">
-
-                    <input type="file" id="quiz2File" accept="image/*">
-
-                    <button type="button" class="upload-button" onclick="uploadQuiz('quiz2')"> Upload Quiz 2</button>
-
-
-                    <button type="button" class="delete-button" onclick="deleteQuiz('quiz2')">Delete Quiz 2 </button>
-
-                </div>
-
-            </div>
-
-
-
-            <!--QUIZ 3-->
-
-            <div class="card">
-
-                <div class="quiz-preview">
-
-                    <img id="quiz3Image" class="quiz-image" alt="Quiz 3">
-
-                    <p id="quiz3Message" class="no-quiz">No quiz uploaded yet.</p>
-
-                </div>
-
+                <h1>
+                    Hi, I'm
+                    <span>John Tristan</span>
+                </h1>
 
                 <h2>
-                    Quiz 3
+                    BSIT-3B Student & Future IT Professional
                 </h2>
 
-                <div class="upload-form">
+                <p class="description">
+                    Welcome to my personal portfolio. Here you can find
+                    my quizzes, laboratory activities, examinations,
+                    projects, and academic outputs.
+                </p>
 
-                    <label for="quiz3File">
-                        Upload your Quiz 3:
-                    </label>
+                <div class="hero-buttons">
 
-                    <input type="file" id="quiz3File" accept="image/*" >
+                    <a href="#quiz" class="btn primary">
+                        VIEW MY WORK
+                    </a>
 
-                    <button type="button" class="upload-button" onclick="uploadQuiz('quiz3')"> Upload Quiz 3 </button>
-                    <button type="button" class="delete-button" onclick="deleteQuiz('quiz3')" >Delete Quiz 3 </button>
+                    <a href="#about" class="btn secondary">
+                        ABOUT ME
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-photo">
+
+                <div class="photo-circle">
+
+                    <img src="profile.jpg.jpg"
+                         alt="John Tristan P. Dominguez">
+
+                </div>
+
+                <div class="floating-card top-card">
+                    <strong>BSIT</strong>
+                    <small>3B</small>
+                </div>
+
+                <div class="floating-card bottom-card">
+                    <strong>2026</strong>
+                    <small>Portfolio</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ABOUT ================= -->
+
+    <section id="about" class="section">
+
+        <div class="section-heading">
+
+            <span>GET TO KNOW ME</span>
+
+            <h2>ABOUT ME</h2>
+
+            <p>
+                A short introduction about myself and my skills.
+            </p>
+
+        </div>
+
+
+        <div class="about-content">
+
+            <div class="about-photo">
+
+                <img src="profile.jpg.jpg"
+                     alt="John Tristan P. Dominguez">
+
+            </div>
+
+
+            <div class="about-text">
+
+                <h3>
+                    Hello! I'm John Tristan P. Dominguez
+                </h3>
+
+                <p>
+                    I am a Bachelor of Science in Information Technology
+                    student at Philippines Christian University.
+                    I am currently learning programming, web development,
+                    and different areas of information technology.
+                </p>
+
+                <p>
+                    This portfolio showcases some of my academic activities,
+                    quizzes, laboratory outputs, examinations, and projects
+                    throughout my journey as an IT student.
+                </p>
+
+
+                <div class="skills">
+
+                    <div class="skill">
+
+                        <div class="skill-label">
+                            <span>HTML</span>
+                            <span>85%</span>
+                        </div>
+
+                        <div class="skill-bar">
+                            <div class="skill-fill html"></div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill">
+
+                        <div class="skill-label">
+                            <span>CSS</span>
+                            <span>80%</span>
+                        </div>
+
+                        <div class="skill-bar">
+                            <div class="skill-fill css"></div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill">
+
+                        <div class="skill-label">
+                            <span>JavaScript</span>
+                            <span>70%</span>
+                        </div>
+
+                        <div class="skill-bar">
+                            <div class="skill-fill js"></div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill">
+
+                        <div class="skill-label">
+                            <span>C#</span>
+                            <span>75%</span>
+                        </div>
+
+                        <div class="skill-bar">
+                            <div class="skill-fill csharp"></div>
+                        </div>
+
+                    </div>
 
                 </div>
 
@@ -196,101 +217,394 @@
     </section>
 
 
+    <!-- ================= QUIZ ================= -->
 
-    <!-- LABORATORY-->
+    <section id="quiz" class="section dark-section">
 
-    <section class="content" id="laboratory">
+        <div class="section-heading">
 
-        <h1> LABORATORY </h1>
+            <span>ACADEMIC ACTIVITIES</span>
 
-        <p> My laboratory activities.</p>
-         
+            <h2>QUIZ</h2>
+
+            <p>
+                Click the quiz card to view the picture.
+            </p>
+
+        </div>
 
 
         <div class="cards">
 
-            <div class="card">
 
-                <h2> Laboratory 1 </h2>
-                <a href="laboratory/lab1-rubric (1).docx" download=> Download Rubric </a>
-            </div>
+            <!-- QUIZ 1 -->
+
+            <a href="image/quiz1.jpg.png"
+               target="_blank"
+               class="activity-card clickable-card">
+
+                <div class="number">01</div>
+
+                <div class="activity-icon">
+                    📝
+                </div>
+
+                <h3>Quiz 1</h3>
+
+                <p>
+                    Click to view Quiz 1
+                </p>
+
+                <div class="image-box">
+
+                    <img src="image/quiz1.jpg.png"
+                         alt="Quiz 1">
+
+                </div>
+
+                <span class="view-label">
+                    CLICK TO VIEW
+                </span>
+
+            </a>
 
 
+            <!-- QUIZ 2 -->
 
-            <div class="card">
+            <a href="image/Quiz2.png"
+               target="_blank"
+               class="activity-card clickable-card">
 
-                <h2> Laboratory 2 </h2>
-                <a href="laboratory/jt-lab2.pdf" download=> Download Rubric </a>
-            </div>
+                <div class="number">02</div>
+
+                <div class="activity-icon">
+                    📝
+                </div>
+
+                <h3>Quiz 2</h3>
+
+                <p>
+                    Click to view Quiz 2
+                </p>
+
+                <div class="image-box">
+
+                    <img src="image/Quiz2.png"
+                         alt="Quiz 2">
+
+                </div>
+
+                <span class="view-label">
+                    CLICK TO VIEW
+                </span>
+
+            </a>
 
 
-            <div class="card">
+            <!-- QUIZ 3 -->
 
-                <h2> Laboratory 3 </h2>
-                 <img src="laboratory/lab3.png" alt="lab3" width="300">
-            </div>
+            <a href="image/Quiz3.png"
+               target="_blank"
+               class="activity-card clickable-card">
+
+                <div class="number">03</div>
+
+                <div class="activity-icon">
+                    📝
+                </div>
+
+                <h3>Quiz 3</h3>
+
+                <p>
+                    Click to view Quiz 3
+                </p>
+
+                <div class="image-box">
+
+                    <img src="image/Quiz3.png"
+                         alt="Quiz 3">
+
+                </div>
+
+                <span class="view-label">
+                    CLICK TO VIEW
+                </span>
+
+            </a>
 
         </div>
 
     </section>
 
 
+    <!-- ================= LABORATORY ================= -->
 
-    <!--EXAM-->
+    <section id="laboratory" class="section">
 
-    <section class="content" id="exam">
+        <div class="section-heading">
 
-        <h1> EXAM </h1>
+            <span>MY OUTPUTS</span>
 
-        <p>My examination outputs.</p>
+            <h2>LABORATORY</h2>
+
+            <p>
+                Click the laboratory card to open the file.
+            </p>
+
+        </div>
 
 
         <div class="cards">
 
-            <div class="card">
-                <h2> Prelim Exam</h2>
-                <img src="exam/exam.jpg" alt="Exam" width="300">
+
+            <!-- LABORATORY 1 -->
+
+            <a href="laboratory/lab1-rubric%20(1).docx"
+               target="_blank"
+               class="activity-card light-card clickable-card">
+
+                <div class="number">01</div>
+
+                <div class="activity-icon">
+                    💻
+                </div>
+
+                <h3>Laboratory 1</h3>
 
                 <p>
-                    Prelim examination output.
+                    Click to open Laboratory 1
+                </p>
+
+                <div class="file-preview">
+                    📄
+                    <span>DOCX FILE</span>
+                </div>
+
+                <span class="view-label">
+                    CLICK TO OPEN
+                </span>
+
+            </a>
+
+
+            <!-- LABORATORY 2 -->
+
+            <a href="laboratory/jt-lab2.pdf"
+               target="_blank"
+               class="activity-card light-card clickable-card">
+
+                <div class="number">02</div>
+
+                <div class="activity-icon">
+                    💻
+                </div>
+
+                <h3>Laboratory 2</h3>
+
+                <p>
+                    Click to open Laboratory 2
+                </p>
+
+                <div class="file-preview">
+                    📄
+                    <span>PDF FILE</span>
+                </div>
+
+                <span class="view-label">
+                    CLICK TO OPEN PDF
+                </span>
+
+            </a>
+
+
+            <!-- LABORATORY 3 -->
+
+            <a href="laboratory/lab3.png"
+               target="_blank"
+               class="activity-card light-card clickable-card">
+
+                <div class="number">03</div>
+
+                <div class="activity-icon">
+                    💻
+                </div>
+
+                <h3>Laboratory 3</h3>
+
+                <p>
+                    Click to view Laboratory 3
+                </p>
+
+                <div class="image-box">
+
+                    <img src="laboratory/lab3.png"
+                         alt="Laboratory 3">
+
+                </div>
+
+                <span class="view-label">
+                    CLICK TO VIEW
+                </span>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= EXAM ================= -->
+
+    <section id="exam" class="section dark-section">
+
+        <div class="section-heading">
+
+            <span>ACADEMIC OUTPUTS</span>
+
+            <h2>EXAMINATION</h2>
+
+            <p>
+                Click the examination card to view the output.
+            </p>
+
+        </div>
+
+
+        <div class="cards">
+
+
+            <!-- PRELIM EXAM -->
+
+            <a href="exam/exam.jpg"
+               target="_blank"
+               class="activity-card clickable-card">
+
+                <div class="number">01</div>
+
+                <div class="activity-icon">
+                    📚
+                </div>
+
+                <h3>Prelim Examination</h3>
+
+                <p>
+                    Click to view Prelim Examination
+                </p>
+
+                <div class="image-box">
+
+                    <img src="exam/exam.jpg"
+                         alt="Prelim Examination">
+
+                </div>
+
+                <span class="view-label">
+                    CLICK TO VIEW
+                </span>
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CONTACT ================= -->
+
+    <section id="contact" class="section">
+
+        <div class="section-heading">
+
+            <span>GET IN TOUCH</span>
+
+            <h2>CONTACT</h2>
+
+            <p>
+                Feel free to contact me.
+            </p>
+
+        </div>
+
+
+        <div class="contact-container">
+
+
+            <div class="contact-card">
+
+                <div class="contact-icon">
+                    📧
+                </div>
+
+                <h3>Email</h3>
+
+                <p>
+                    Contact me through email.
+                </p>
+
+                <a href="mailto:your-email@example.com">
+                    SEND EMAIL
+                </a>
+
+            </div>
+
+
+            <div class="contact-card">
+
+                <div class="contact-icon">
+                    💻
+                </div>
+
+                <h3>GitHub</h3>
+
+                <p>
+                    View my coding projects.
+                </p>
+
+                <a href="https://github.com/"
+                   target="_blank">
+                    VIEW GITHUB
+                </a>
+
+            </div>
+
+
+            <div class="contact-card">
+
+                <div class="contact-icon">
+                    🎓
+                </div>
+
+                <h3>Education</h3>
+
+                <p>
+                    Philippines Christian University
                 </p>
 
             </div>
 
-
-            <div class="card">
-
-                <h2>Midterm Exam</h2>
-
-                <p>Midterm examination output.</p>
-
-            </div>
-
-
-            <div class="card">
-                <h2>
-                    Final Exam
-                </h2>
-
-                 <p>Final examination output.</p>
-            </div>
-
         </div>
 
     </section>
 
 
-
-    <!--FOOTER-->
+    <!-- ================= FOOTER ================= -->
 
     <footer>
 
-        © 2026 John Tristan P. Dominguez | My Portfolio
+        <h3>JT. PORTFOLIO</h3>
+
+        <p>
+            BSIT-3B Student Portfolio
+        </p>
+
+        <p>
+            © 2026 John Tristan P. Dominguez.
+            All Rights Reserved.
+        </p>
 
     </footer>
 
-
-    <!-- JAVASCRIPT -->
 
     <script src="script.js"></script>
 
