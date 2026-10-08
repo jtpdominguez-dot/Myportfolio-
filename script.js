@@ -1,303 +1,281 @@
-// ===============================
-// PORTFOLIO JAVASCRIPT
-// ===============================
+/* ==================================================
+   MOBILE MENU
+================================================== */
 
-// Get all navigation buttons
-const navLinks = document.querySelectorAll(".nav-link");
+const menuBtn = document.querySelector(".menu-btn");
+const navLinks = document.querySelector(".nav-links");
 
-// Get all sections
-const sections = document.querySelectorAll(".content-section");
+if (menuBtn && navLinks) {
 
-// ===============================
-// NAVIGATION
-// ===============================
+    menuBtn.addEventListener("click", function () {
 
-navLinks.forEach(link => {
-    link.addEventListener("click", function (event) {
-        event.preventDefault();
+        navLinks.classList.toggle("active");
 
-        const targetId = this.getAttribute("data-section");
+    });
 
-        // Hide all sections
-        sections.forEach(section => {
-            section.style.display = "none";
+}
+
+
+document.querySelectorAll(".nav-links a")
+    .forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            navLinks.classList.remove("active");
+
         });
 
-        // Show selected section
-        const targetSection = document.getElementById(targetId);
-
-        if (targetSection) {
-            targetSection.style.display = "block";
-        }
-
-        // Remove active class
-        navLinks.forEach(nav => {
-            nav.classList.remove("active");
-        });
-
-        // Add active class
-        this.classList.add("active");
     });
-});
 
 
-// ===============================
-// FILE VIEWER
-// ===============================
 
-function viewFile(file) {
+/* ==================================================
+   3D PROFILE CARD
+================================================== */
 
-    if (!file) {
-        alert("No file selected.");
-        return;
-    }
+const profileCard =
+    document.querySelector(".profile-card");
 
-    const fileURL = URL.createObjectURL(file);
+if (profileCard) {
 
-    const fileViewer = document.getElementById("fileViewer");
-    const viewerContent = document.getElementById("viewerContent");
+    profileCard.addEventListener(
+        "mousemove",
+        function (event) {
 
-    if (!fileViewer || !viewerContent) {
-        alert("File viewer was not found in the HTML.");
-        return;
-    }
+            const rect =
+                profileCard.getBoundingClientRect();
 
-    viewerContent.innerHTML = "";
+            const x =
+                event.clientX - rect.left;
 
-    // IMAGE
-    if (file.type.startsWith("image/")) {
+            const y =
+                event.clientY - rect.top;
 
-        const image = document.createElement("img");
+            const centerX =
+                rect.width / 2;
 
-        image.src = fileURL;
-        image.alt = "Portfolio Activity";
+            const centerY =
+                rect.height / 2;
 
-        image.style.maxWidth = "100%";
-        image.style.maxHeight = "80vh";
-        image.style.display = "block";
-        image.style.margin = "auto";
+            const rotateX =
+                ((y - centerY) / centerY) * -10;
 
-        viewerContent.appendChild(image);
-    }
+            const rotateY =
+                ((x - centerX) / centerX) * 10;
 
-    // PDF
-    else if (file.type === "application/pdf") {
+            profileCard.style.transform =
+                `rotateX(${rotateX}deg)
+                 rotateY(${rotateY}deg)
+                 scale(1.02)`;
 
-        const pdf = document.createElement("iframe");
-
-        pdf.src = fileURL;
-
-        pdf.style.width = "100%";
-        pdf.style.height = "80vh";
-        pdf.style.border = "none";
-
-        viewerContent.appendChild(pdf);
-    }
-
-    else {
-        alert("Please upload an image or PDF file.");
-        return;
-    }
-
-    fileViewer.style.display = "flex";
-}
-
-
-// ===============================
-// CLOSE FILE VIEWER
-// ===============================
-
-function closeViewer() {
-
-    const fileViewer = document.getElementById("fileViewer");
-
-    if (fileViewer) {
-        fileViewer.style.display = "none";
-    }
-
-    const viewerContent = document.getElementById("viewerContent");
-
-    if (viewerContent) {
-        viewerContent.innerHTML = "";
-    }
-}
-
-
-// ===============================
-// QUIZ FILE
-// ===============================
-
-const quizInput = document.getElementById("quizFile");
-
-if (quizInput) {
-
-    quizInput.addEventListener("change", function () {
-
-        const file = this.files[0];
-
-        if (file) {
-            viewFile(file);
         }
-
-    });
-}
-
-
-// ===============================
-// LABORATORY FILE
-// ===============================
-
-const laboratoryInput = document.getElementById("laboratoryFile");
-
-if (laboratoryInput) {
-
-    laboratoryInput.addEventListener("change", function () {
-
-        const file = this.files[0];
-
-        if (file) {
-            viewFile(file);
-        }
-
-    });
-}
-
-
-// ===============================
-// EXAMINATION FILE
-// ===============================
-
-const examinationInput = document.getElementById("examinationFile");
-
-if (examinationInput) {
-
-    examinationInput.addEventListener("change", function () {
-
-        const file = this.files[0];
-
-        if (file) {
-            viewFile(file);
-        }
-
-    });
-}
-
-
-// ===============================
-// UPLOAD / SAVE FILE
-// ===============================
-
-function uploadFile(inputId, messageId) {
-
-    const input = document.getElementById(inputId);
-
-    if (!input || !input.files.length) {
-        alert("Please select a picture or PDF first.");
-        return;
-    }
-
-    const file = input.files[0];
-
-    // Check file type
-    const allowedTypes = [
-        "image/jpeg",
-        "image/png",
-        "image/jpg",
-        "image/webp",
-        "application/pdf"
-    ];
-
-    if (!allowedTypes.includes(file.type)) {
-        alert("Only JPG, PNG, WEBP, and PDF files are allowed.");
-        return;
-    }
-
-    // Save information temporarily in browser
-    const fileURL = URL.createObjectURL(file);
-
-    localStorage.setItem(
-        inputId + "_name",
-        file.name
     );
 
-    localStorage.setItem(
-        inputId + "_type",
-        file.type
+
+    profileCard.addEventListener(
+        "mouseleave",
+        function () {
+
+            profileCard.style.transform =
+                "rotateX(0deg) rotateY(0deg) scale(1)";
+
+        }
     );
 
-    if (messageId) {
+}
 
-        const message = document.getElementById(messageId);
 
-        if (message) {
-            message.textContent =
-                "Uploaded: " + file.name;
+
+/* ==================================================
+   3D OUTPUT CARDS
+================================================== */
+
+const outputCards =
+    document.querySelectorAll(".output-card");
+
+outputCards.forEach(function (card) {
+
+    card.addEventListener(
+        "mousemove",
+        function (event) {
+
+            const rect =
+                card.getBoundingClientRect();
+
+            const x =
+                event.clientX - rect.left;
+
+            const y =
+                event.clientY - rect.top;
+
+            const centerX =
+                rect.width / 2;
+
+            const centerY =
+                rect.height / 2;
+
+            const rotateX =
+                ((y - centerY) / centerY) * -5;
+
+            const rotateY =
+                ((x - centerX) / centerX) * 5;
+
+            card.style.transform =
+                `perspective(900px)
+                 rotateX(${rotateX}deg)
+                 rotateY(${rotateY}deg)
+                 translateY(-8px)
+                 scale(1.02)`;
+
         }
-    }
-
-    alert("File uploaded successfully!");
-
-    viewFile(file);
-}
+    );
 
 
-// ===============================
-// BUTTON FUNCTIONS
-// ===============================
+    card.addEventListener(
+        "mouseleave",
+        function () {
 
-function uploadQuiz() {
-    uploadFile("quizFile", "quizMessage");
-}
+            card.style.transform =
+                "";
 
-function uploadLaboratory() {
-    uploadFile("laboratoryFile", "laboratoryMessage");
-}
-
-function uploadExamination() {
-    uploadFile("examinationFile", "examinationMessage");
-}
-
-
-// ===============================
-// PAGE LOAD
-// ===============================
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    // Hide all sections first
-    sections.forEach(section => {
-        section.style.display = "none";
-    });
-
-    // Show HOME
-    const homeSection = document.getElementById("home");
-
-    if (homeSection) {
-        homeSection.style.display = "block";
-    }
-
-    // Make HOME active
-    if (navLinks.length > 0) {
-        navLinks.forEach(nav => {
-            nav.classList.remove("active");
-        });
-
-        navLinks[0].classList.add("active");
-    }
+        }
+    );
 
 });
 
 
-// ===============================
-// CLOSE VIEWER WHEN CLICKING OUTSIDE
-// ===============================
 
-window.addEventListener("click", function (event) {
+/* ==================================================
+   SCROLL REVEAL
+================================================== */
 
-    const fileViewer = document.getElementById("fileViewer");
+const revealElements =
+    document.querySelectorAll(
+        ".glass-card, " +
+        ".skill-card, " +
+        ".project-card, " +
+        ".output-card, " +
+        ".contact-card, " +
+        ".education-card"
+    );
 
-    if (event.target === fileViewer) {
-        closeViewer();
-    }
+
+const observer =
+    new IntersectionObserver(
+        function (entries) {
+
+            entries.forEach(function (entry) {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add(
+                        "show"
+                    );
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+
+revealElements.forEach(function (element) {
+
+    element.style.opacity = "0";
+
+    element.style.transform =
+        "translateY(40px)";
+
+    element.style.transition =
+        "opacity 0.7s ease, transform 0.7s ease";
+
+    observer.observe(element);
 
 });
+
+
+/* ==================================================
+   REVEAL STYLE
+================================================== */
+
+const revealStyle =
+    document.createElement("style");
+
+revealStyle.innerHTML = `
+
+    .glass-card.show,
+    .skill-card.show,
+    .project-card.show,
+    .output-card.show,
+    .contact-card.show,
+    .education-card.show {
+
+        opacity: 1 !important;
+
+        transform:
+            translateY(0) !important;
+
+    }
+
+`;
+
+document.head.appendChild(revealStyle);
+
+
+
+/* ==================================================
+   GALAXY MOUSE EFFECT
+================================================== */
+
+document.addEventListener(
+    "mousemove",
+    function (event) {
+
+        const x =
+            (event.clientX / window.innerWidth - 0.5);
+
+        const y =
+            (event.clientY / window.innerHeight - 0.5);
+
+        const planet1 =
+            document.querySelector(".planet-1");
+
+        const planet2 =
+            document.querySelector(".planet-2");
+
+        if (planet1) {
+
+            planet1.style.marginLeft =
+                `${x * 30}px`;
+
+            planet1.style.marginTop =
+                `${y * 30}px`;
+
+        }
+
+        if (planet2) {
+
+            planet2.style.marginLeft =
+                `${x * -20}px`;
+
+            planet2.style.marginTop =
+                `${y * -20}px`;
+
+        }
+
+    }
+);
+
+
+
+/* ==================================================
+   CURRENT YEAR
+================================================== */
+
+console.log(
+    "John Tristan Galaxy Portfolio loaded successfully."
+);
